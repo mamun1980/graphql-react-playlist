@@ -6,8 +6,10 @@ const server = express()
 
 const dev = process.env.NODE_ENV !== 'production';
 
-server.use('/graphql', graphqlHTTP((req, res, gql) => {
-    schema
+server.use('/graphql', graphqlHTTP( {
+    schema,
+    graphiql: dev,
+    pretty: dev
 }));
 
 server.listen(4000, err => {
